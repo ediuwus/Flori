@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flori la Super Preț 🌸</title>
+    <title>Ofertă Specială Flori 🌸</title>
     <style>
-        body { font-family: 'Georgia', serif; background-color: #fff0f5; margin: 0; text-align: center; color: #d02090; }
-        .shop-page { padding: 40px 20px; }
-        .flower-card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; max-width: 300px; }
-        .btn { background-color: #ff69b4; color: white; padding: 15px 30px; border: none; border-radius: 25px; font-size: 18px; cursor: pointer; margin-top: 20px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fff5f8; margin: 0; text-align: center; overflow-x: hidden; }
         
-        /* Pagina de felicitare */
-        #surprise { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff0f5; z-index: 999; padding-top: 50px; }
-        .heart { color: #ff1493; font-size: 50px; animation: beat 1s infinite; }
-        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-        .message { font-size: 24px; padding: 20px; line-height: 1.6; }
-        .falling-flowers { position: absolute; top: -50px; animation: fall 5s linear infinite; font-size: 20px; }
-        @keyframes fall { to { transform: translateY(110vh); } }
-    </style>
-</head>
-<body>
+        /* Pagina de Magazin */
+        #shop { padding: 50px 20px; }
+        .promo-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); display: inline-block; border: 2px solid #ffb6c1; }
+        .btn-oferta { background: #ff4d94; color: white; padding: 15px 40px; border: none; border-radius: 50px; font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .btn-oferta:hover { background: #ff1a75; transform: scale(1.05); }
 
-    <div id="shop" class="shop-page">
-        <h1 style="color: #ff1493;">🌸 Florăria "Pentru Tine" 🌸</h1>
-        <p>Promoție Specială: Buchete de Lalele și Trandafiri de la 19.99 RON!</p>
-        <div class="flower-card">
-            <img src="https://cdn-icons-png.flaticon.com/512/346/346218.png" width="100">
-            <h3>Buchet de Primăvară</h3>
-            <p style="text-decoration: line-through; color: gray;">89 RON</p>
-            <p style="font-size: 22px; font-weight: bold;">19.99 RON</p>
-            <button class="btn" onclick="arataSurpriza()">VEZI OFERTA</button>
-        </div>
-    </div>
+        /* Ecranul cu Flori */
+        #flower-garden { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #fff0f5, #ffb6c1); z-index: 100; overflow: hidden; }
+        .instruction { position: absolute; top: 20px; width: 100%; font-size: 22px; color: #b03060; font-weight: bold; z-index: 101; text-shadow: 1px 1px white; }
+        
+        .floating-flower { 
+            position: absolute; 
+            font-size: 50px; 
+            cursor: pointer; 
+            user-select: none;
+            transition: transform 0.2s;
+            animation: move linear infinite;
+        }
+        
+        @keyframes move {
+            from { transform: translateY(110vh) rotate(0deg); }
+            to { transform: translateY(-20vh) rotate(360deg); }
+        }
 
-    <div id="surprise">
-        <div class="heart">❤️</div>
-        <h1 style="color: #ff1493;">TE IUBESC, MAMA!</h1>
-        <div class="message">
-
+        /* Mesajul care apare la click */
+        .love-popup {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.9);
+            color: #d02090;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: fadeOut 1.5s forwards;
+        }
